@@ -13,7 +13,7 @@ class VideoCropper:
         self.root.title("Video Cropper Pro (Final Fix)")
         self.root.geometry("450x350")
         
-        # --- UI หน้าหลัก ---
+        # --- Main UI  ---
         self.main_frame = tk.Frame(root)
         self.main_frame.pack(expand=True, fill="both", padx=20, pady=20)
         
@@ -80,11 +80,9 @@ class VideoCropper:
         x1, y1 = min(self.start_x, event.x), min(self.start_y, event.y)
         x2, y2 = max(self.start_x, event.x), max(self.start_y, event.y)
         
-        # บังคับให้ขนาดเป็นเลขคู่ เพื่อแก้ปัญหา "width not divisible by 2"
         w_raw = int((x2-x1)/self.scale_factor)
         h_raw = int((y2-y1)/self.scale_factor)
         
-        # ปรับให้เป็นเลขคู่ที่ใกล้เคียงที่สุด
         w_even = w_raw if w_raw % 2 == 0 else w_raw - 1
         h_even = h_raw if h_raw % 2 == 0 else h_raw - 1
         
